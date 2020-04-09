@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://madgezhang.github.io/</id>
     <title>Madge&apos;s blog</title>
-    <updated>2020-04-09T10:49:51.120Z</updated>
+    <updated>2020-04-09T14:42:41.968Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://madgezhang.github.io/"/>
     <link rel="self" href="https://madgezhang.github.io/atom.xml"/>
@@ -10,6 +10,43 @@
     <logo>https://madgezhang.github.io/images/avatar.png</logo>
     <icon>https://madgezhang.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Madge&apos;s blog</rights>
+    <entry>
+        <title type="html"><![CDATA[如何提高英语水平？]]></title>
+        <id>https://madgezhang.github.io/post/ru-he-ti-gao-ying-yu-shui-ping/</id>
+        <link href="https://madgezhang.github.io/post/ru-he-ti-gao-ying-yu-shui-ping/">
+        </link>
+        <updated>2020-04-09T14:42:02.000Z</updated>
+        <content type="html"><![CDATA[<p>英语学习包括四个部分：词汇+阅读+听力+口语+写作。因此，我今天根据以往在各大论坛、公众号看到的一些英语学习经验，分别从这五个方面谈谈如何提高英语水平。</p>
+<h2 id="词汇篇">词汇篇</h2>
+<p>一本《17天搞定GRE》+ 一本我要背的单词书</p>
+<p>这里我根据自己的具体情况，选择的单词书是张红岩的《托福IBT词以类记》。由于现在书还没到，所以我还没有整理出具体的实施方案，等到书到后会更新此贴。</p>
+<p>另外，我还想买一本《英语词汇的奥秘》。</p>
+<h2 id="阅读篇">阅读篇</h2>
+<p>选一本适合自己水平的<strong>有译文</strong>的阅读书，这里我选择的是《英语文摘》，我先购买了2020年1月~3月期的。我觉得可以结合新概念英语3一起使用，英语文摘的文章可能比较难，我觉得新概念3的文章还不错。</p>
+<p>这两类阅读文章都有听力，也可以当做听力材料。</p>
+<p>https://www.douban.com/group/topic/4791671/</p>
+<p>http://www.360doc.com/content/16/0504/17/32838835_556238318.shtml</p>
+<p>阅读方法：</p>
+<ol>
+<li>
+<p>诵读。一边读一边把生词和句子划出来（不要直接在原文上标注中文意思），将生词写入生词本中，加入现在正在背的或者复习的单词书的时间表，作为新的一章（我个人觉得可以加入最近的一章，这样效果会比较好）</p>
+<p>注意：一般一篇的生词不要超过10个，如果超过10个，需要更换更简单的阅读材料，或者先不要阅读，先去背单词。</p>
+<p>根据我个人的情况，我建议我先阅读新概念，或者先集中精力在15天内搞定单词）</p>
+</li>
+<li>
+<p>重点阅读不懂的句子，对照中文译文搞懂意思。</p>
+</li>
+<li>
+<p>再次诵读，读懂为止。</p>
+</li>
+<li>
+<p>和背单词同理，按照时间表隔几天重读一次。</p>
+</li>
+</ol>
+<p>注意：每天读一篇即可，不要贪多，贪多容易放弃。<br>
+做好时间规划！！！</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Typora: Extremely Concise Editor]]></title>
         <id>https://madgezhang.github.io/post/typora-extremely-concise-editor/</id>
