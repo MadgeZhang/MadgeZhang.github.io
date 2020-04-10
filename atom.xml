@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://madgezhang.github.io/</id>
     <title>Madge&apos;s blog</title>
-    <updated>2020-04-09T14:42:41.968Z</updated>
+    <updated>2020-04-10T02:54:09.615Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://madgezhang.github.io/"/>
     <link rel="self" href="https://madgezhang.github.io/atom.xml"/>
@@ -10,6 +10,30 @@
     <logo>https://madgezhang.github.io/images/avatar.png</logo>
     <icon>https://madgezhang.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Madge&apos;s blog</rights>
+    <entry>
+        <title type="html"><![CDATA[RStudio 安装 Rtools]]></title>
+        <id>https://madgezhang.github.io/post/rstudio-an-zhuang-rtools/</id>
+        <link href="https://madgezhang.github.io/post/rstudio-an-zhuang-rtools/">
+        </link>
+        <updated>2020-04-10T02:53:13.000Z</updated>
+        <content type="html"><![CDATA[<ul>
+<li>
+<p>Rtools不能通过常规install.packages()命令进行安装，需要通过installr包进行安装。</p>
+<pre><code class="language-{text}">install.packages(&quot;installr&quot;)
+install.packages(&quot;stringr&quot;)    ###依赖包
+library(stringr)
+library(installr)
+</code></pre>
+</li>
+<li>
+<p>安装Rtools</p>
+<pre><code class="language-{text}">install.Rtools()
+</code></pre>
+<p>转自：https://blog.csdn.net/yangli2852/article/details/95635373</p>
+</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[如何提高英语水平？]]></title>
         <id>https://madgezhang.github.io/post/ru-he-ti-gao-ying-yu-shui-ping/</id>

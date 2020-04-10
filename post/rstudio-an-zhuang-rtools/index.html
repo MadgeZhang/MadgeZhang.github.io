@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Madge&#39;s blog</title>
+<title>RStudio 安装 Rtools | Madge&#39;s blog</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -18,8 +18,12 @@
 
 
 
-    <meta name="description" content="Madge&#39;s blog">
-    
+    <meta name="description" content="
+
+Rtools不能通过常规install.packages()命令进行安装，需要通过installr包进行安装。
+install.packages(&quot;installr&quot;)
+install.packages(&quot;..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
@@ -89,79 +93,44 @@
 
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://madgezhang.github.io/post/rstudio-an-zhuang-rtools/">
-                  <h2 class="post-title">RStudio 安装 Rtools</h2>
-                </a>
-                <div class="post-date">
-                  2020-04-10
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
+          <div class="post-detail">
+            <h2 class="post-title">RStudio 安装 Rtools</h2>
+            <div class="post-date">2020-04-10</div>
+            
+            <div class="post-content" v-pre>
+              <ul>
+<li>
+<p>Rtools不能通过常规install.packages()命令进行安装，需要通过installr包进行安装。</p>
+<pre><code class="language-{text}">install.packages(&quot;installr&quot;)
+install.packages(&quot;stringr&quot;)    ###依赖包
+library(stringr)
+library(installr)
+</code></pre>
+</li>
+<li>
+<p>安装Rtools</p>
+<pre><code class="language-{text}">install.Rtools()
+</code></pre>
+<p>转自：https://blog.csdn.net/yangli2852/article/details/95635373</p>
+</li>
+</ul>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
                 <a href="https://madgezhang.github.io/post/ru-he-ti-gao-ying-yu-shui-ping/">
-                  <h2 class="post-title">如何提高英语水平？</h2>
+                  <h3 class="post-title">
+                    如何提高英语水平？
+                  </h3>
                 </a>
-                <div class="post-date">
-                  2020-04-09
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
               </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://madgezhang.github.io/post/typora-extremely-concise-editor/">
-                  <h2 class="post-title">Typora: Extremely Concise Editor</h2>
-                </a>
-                <div class="post-date">
-                  2020-04-09
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://madgezhang.github.io/post/hello-gridea/">
-                  <h2 class="post-title">Hello Gridea</h2>
-                </a>
-                <div class="post-date">
-                  2018-12-12
-                </div>
-                <div class="post-abstract">
-                  <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+            
 
-                </div>
-              </div>
-              
-                <a class="right" href="https://madgezhang.github.io/post/hello-gridea/">
-                  <div class="feature-container" style="background-image: url('https://madgezhang.github.io//post-images/hello-gridea.png')">
-                  </div>
-                </a>
-              
-            </article>
-          
+            
 
-          <div class="pagination-container">
-  
-  
-</div>
+          </div>
 
         </div>
       </div>
