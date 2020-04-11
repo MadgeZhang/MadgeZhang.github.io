@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>贝叶斯推断——四种基本且广泛使用的一维模型（参数是一维的） | Madge&#39;s blog</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://madgezhang.github.io//favicon.ico?v=1586605288005">
+<link rel="stylesheet" href="https://madgezhang.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="
+
+二项分布、正态分布、泊松分布、指数分布
+
+
+这里的分布是针对似然而言的（或者说，需要估计的是哪一个分布的参数）
+
+
+贝叶斯推断
+
+
+贝叶斯推断就是根据新的数据来更新（修正）我们的认知。
+prior+data→posterior
+
+
+贝叶..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://madgezhang.github.io/">
+        <img src="https://madgezhang.github.io//images/avatar.png?v=1586605288005" class="site-logo">
+        <h1 class="site-title">Madge&#39;s blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      Madge's blog
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://madgezhang.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">贝叶斯推断——四种基本且广泛使用的一维模型（参数是一维的）</h2>
+            <div class="post-date">2020-04-11</div>
+            
+            <div class="post-content" v-pre>
+              <ul>
+<li>
+<p>二项分布、正态分布、泊松分布、指数分布</p>
+</li>
+<li>
+<p>这里的分布是针对似然而言的（或者说，需要估计的是哪一个分布的参数）</p>
+</li>
+</ul>
+<h2 id="贝叶斯推断">贝叶斯推断</h2>
+<ul>
+<li>
+<p>贝叶斯推断就是根据新的数据来更新（修正）我们的认知。</p>
+<p>prior+data→posterior</p>
+</li>
+<li>
+<p>贝叶斯推断是通过贝叶斯法则来进行的：<br>
+<img src="https://madgezhang.github.io//post-images/1586605236746.png" alt="" loading="lazy"></p>
+<figure data-type="image" tabindex="1"><img src="C:%5CUsers%5CJIng%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200411173439374.png" alt="image-20200411173439374" loading="lazy"></figure>
+</li>
+</ul>
+<p>p(theta)称为<strong>先验分布</strong>，专家意见和相关研究结果可以作为有信息的先验；<br>
+p(y|theta)称为<strong>似然</strong>；<br>
+p(y)称为证据，即<strong>归一化因子</strong>，归一化因子的计算方法：<br>
+<img src="C:%5CUsers%5CJIng%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200411174111469.png" alt="image-20200411174111469" loading="lazy"><br>
+虽然在低维中，这个积分可以较容易地计算出来，但在高维中它会变得难以处理。这也是贝叶斯计算中的一个难点。</p>
+<hr>
+<h2 id="二项分布">二项分布</h2>
+<h3 id="抽样模型">抽样模型</h3>
+<p>n 次伯努利试验，得到data  y1, y2, ..., yn, yi(i大于等于1，且小于等于n)只能取0或1. 设n次试验中成功的次数为y, y = sum(y1 : yn)。我们要估计的参数是一次试验成功的概率theta。</p>
+<p>似然：<img src="C:%5CUsers%5CJIng%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200411175857794.png" alt="image-20200411175857794" loading="lazy"></p>
+<p>设先验：<strong>θ ~ g(θ)</strong></p>
+<p>那么，后验 ：<strong>p(θ│y) ∝ L(θ)g(θ)</strong></p>
+<p><strong>为什么要抽样？<strong>我们要估计后验分布，而后验分布取决于</strong>data|theta（似然）和先验分布</strong>。一般来说，根据现有知识我们可以给出一个合理的先验分布，那么接下来就<strong>需要获取data</strong>，这时就需要进行抽样了。</p>
+<hr>
+<h3 id="实际的例子1the-binomial-example-with-the-uniform-prior-distribution">实际的例子1（the binomial example with the uniform prior distribution）</h3>
+<ul>
+<li>
+<p>假设我们要估计某一地区女孩出生的概率（某一出生的小孩是女孩的概率）theta。</p>
+</li>
+<li>
+<p>抽样：n次出生记录中有y次是女孩。</p>
+</li>
+<li>
+<p>假设theta的先验分布为[0,1]上的均匀分布</p>
+<p>（均匀分布的密度函数为 1/(b-a)：</p>
+<p>p(theta) = 1</p>
+</li>
+<li>
+<p>似然：<img src="D:%5Cmyblog%5C%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD%E2%80%94%E2%80%94%E5%9B%9B%E7%A7%8D%E5%9F%BA%E6%9C%AC%E4%B8%94%E5%B9%BF%E6%B3%9B%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E7%BB%B4%E6%A8%A1%E5%9E%8B%EF%BC%88%E5%8F%82%E6%95%B0%E6%98%AF%E4%B8%80%E7%BB%B4%E7%9A%84%EF%BC%89.assets%5Cimage-20200411185454095.png" alt="image-20200411185454095" loading="lazy"></p>
+</li>
+</ul>
+<p>则后验：<img src="D:%5Cmyblog%5C%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD%E2%80%94%E2%80%94%E5%9B%9B%E7%A7%8D%E5%9F%BA%E6%9C%AC%E4%B8%94%E5%B9%BF%E6%B3%9B%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E7%BB%B4%E6%A8%A1%E5%9E%8B%EF%BC%88%E5%8F%82%E6%95%B0%E6%98%AF%E4%B8%80%E7%BB%B4%E7%9A%84%EF%BC%89.assets%5Cimage-20200411185551642.png" alt="image-20200411185551642" loading="lazy"></p>
+<p>我们可以将这一后验分布看作未标准化的贝塔分布：</p>
+<figure data-type="image" tabindex="2"><img src="D:%5Cmyblog%5C%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD%E2%80%94%E2%80%94%E5%9B%9B%E7%A7%8D%E5%9F%BA%E6%9C%AC%E4%B8%94%E5%B9%BF%E6%B3%9B%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E7%BB%B4%E6%A8%A1%E5%9E%8B%EF%BC%88%E5%8F%82%E6%95%B0%E6%98%AF%E4%B8%80%E7%BB%B4%E7%9A%84%EF%BC%89.assets%5Cimage-20200411185652515.png" alt="image-20200411185652515" loading="lazy"></figure>
+<hr>
+<p>PS:</p>
+<p>贝塔分布的密度函数：</p>
+<figure data-type="image" tabindex="3"><img src="D:%5Cmyblog%5C%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD%E2%80%94%E2%80%94%E5%9B%9B%E7%A7%8D%E5%9F%BA%E6%9C%AC%E4%B8%94%E5%B9%BF%E6%B3%9B%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E7%BB%B4%E6%A8%A1%E5%9E%8B%EF%BC%88%E5%8F%82%E6%95%B0%E6%98%AF%E4%B8%80%E7%BB%B4%E7%9A%84%EF%BC%89.assets%5Cimage-20200411185831519.png" alt="image-20200411185831519" loading="lazy"></figure>
+<p>贝塔函数Be(y+1, n-y+1)的分母与该例中的归一化系数是相同的；<br>
+该例中的后验分布相当于贝塔分布Be(y+1, n-y+1)乘以一个常数<img src="D:%5Cmyblog%5C%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD%E2%80%94%E2%80%94%E5%9B%9B%E7%A7%8D%E5%9F%BA%E6%9C%AC%E4%B8%94%E5%B9%BF%E6%B3%9B%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E7%BB%B4%E6%A8%A1%E5%9E%8B%EF%BC%88%E5%8F%82%E6%95%B0%E6%98%AF%E4%B8%80%E7%BB%B4%E7%9A%84%EF%BC%89.assets%5Cimage-20200411190139251.png" alt="image-20200411190139251" loading="lazy"></p>
+<p>我们可以计算出该例中的归一化系数：（可以看出，p(y)的值仅取决于试验次数n）</p>
+<figure data-type="image" tabindex="4"><img src="D:%5Cmyblog%5C%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD%E2%80%94%E2%80%94%E5%9B%9B%E7%A7%8D%E5%9F%BA%E6%9C%AC%E4%B8%94%E5%B9%BF%E6%B3%9B%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E7%BB%B4%E6%A8%A1%E5%9E%8B%EF%BC%88%E5%8F%82%E6%95%B0%E6%98%AF%E4%B8%80%E7%BB%B4%E7%9A%84%EF%BC%89.assets%5Cimage-20200411191219070.png" alt="image-20200411191219070" loading="lazy"></figure>
+<hr>
+<p><strong>接上个例子</strong></p>
+<p>该如何计算<img src="D:%5Cmyblog%5C%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD%E2%80%94%E2%80%94%E5%9B%9B%E7%A7%8D%E5%9F%BA%E6%9C%AC%E4%B8%94%E5%B9%BF%E6%B3%9B%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E7%BB%B4%E6%A8%A1%E5%9E%8B%EF%BC%88%E5%8F%82%E6%95%B0%E6%98%AF%E4%B8%80%E7%BB%B4%E7%9A%84%EF%BC%89.assets%5Cimage-20200411192116365.png" alt="image-20200411192116365" loading="lazy">？</p>
+<figure data-type="image" tabindex="5"><img src="D:%5Cmyblog%5C%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD%E2%80%94%E2%80%94%E5%9B%9B%E7%A7%8D%E5%9F%BA%E6%9C%AC%E4%B8%94%E5%B9%BF%E6%B3%9B%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E7%BB%B4%E6%A8%A1%E5%9E%8B%EF%BC%88%E5%8F%82%E6%95%B0%E6%98%AF%E4%B8%80%E7%BB%B4%E7%9A%84%EF%BC%89.assets%5Cimage-20200411192152924.png" alt="image-20200411192152924" loading="lazy"></figure>
+<p>我们可以成功计算出分母：</p>
+<figure data-type="image" tabindex="6"><img src="D:%5Cmyblog%5C%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD%E2%80%94%E2%80%94%E5%9B%9B%E7%A7%8D%E5%9F%BA%E6%9C%AC%E4%B8%94%E5%B9%BF%E6%B3%9B%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E7%BB%B4%E6%A8%A1%E5%9E%8B%EF%BC%88%E5%8F%82%E6%95%B0%E6%98%AF%E4%B8%80%E7%BB%B4%E7%9A%84%EF%BC%89.assets%5Cimage-20200411192224832.png" alt="image-20200411192224832" loading="lazy"></figure>
+<p>所以，贝塔分布是伯努利分布（二项分布）的共轭先验分布。</p>
+<p>PS：在贝叶斯统计中，如果后验分布与先验分布属于同类，则先验分布与后验分布被称为共轭分布，而先验分布被称为似然函数的共轭先验。</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://madgezhang.github.io/post/rstudio-an-zhuang-rtools/">
+                  <h3 class="post-title">
+                    RStudio 安装 Rtools
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>
