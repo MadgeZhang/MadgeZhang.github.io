@@ -1,20 +1,13 @@
-<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
-
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Typora: Extremely Concise Editor | Madge&#39;s blog</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://madgezhang.github.io//favicon.ico?v=1586605288005">
+<link rel="shortcut icon" href="https://madgezhang.github.io//favicon.ico?v=1586605316320">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://madgezhang.github.io//styles/main.css">
-
-
-
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<link rel="alternate" type="application/atom+xml" title="Typora: Extremely Concise Editor | Madge&#39;s blog - Atom Feed" href="https://madgezhang.github.io//atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
@@ -24,81 +17,82 @@
 Only one window.
 Live Preview —— Just press &quot;Enter&quot;,..." />
     <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
   <body>
-    <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="https://madgezhang.github.io/">
-        <img src="https://madgezhang.github.io//images/avatar.png?v=1586605288005" class="site-logo">
-        <h1 class="site-title">Madge&#39;s blog</h1>
-      </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
-    </div>
-    <div>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://madgezhang.github.io/">
+  <img class="avatar" src="https://madgezhang.github.io//images/avatar.png?v=1586605316320" alt="">
+  </a>
+  <h1 class="site-title">
+    Madge&#39;s blog
+  </h1>
+  <p class="site-description">
+    Madge's blog
+  </p>
+  <div class="menu-container">
+    
       
-        
-          <a href="/" class="site-nav">
-            首页
-          </a>
-        
+        <a href="/" class="menu">
+          首页
+        </a>
       
-        
-          <a href="/archives" class="site-nav">
-            归档
-          </a>
-        
+    
       
-        
-          <a href="/tags" class="site-nav">
-            标签
-          </a>
-        
+        <a href="/archives" class="menu">
+          归档
+        </a>
       
-        
-          <a href="/post/about" class="site-nav">
-            关于
-          </a>
-        
+    
       
-    </div>
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-        
-      
-    </div>
-    <div class="site-description">
-      Madge's blog
-    </div>
-    <div class="site-footer">
-      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://madgezhang.github.io//atom.xml" target="_blank">RSS</a>
-    </div>
+    
   </div>
 </div>
 
-
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">Typora: Extremely Concise Editor</h2>
-            <div class="post-date">2020-04-09</div>
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Typora: Extremely Concise Editor
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-04-09
+              </span>
+              <span>
+                11 min read
+              </span>
+              
+            </div>
             
-            <div class="post-content" v-pre>
-              <h2 id="1-characteristics-intro">1 Characteristics Intro</h2>
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h2 id="1-characteristics-intro">1 Characteristics Intro</h2>
 <h3 id="11-what-you-see-is-what-you-get">1.1 What you see is what you get</h3>
 <ul>
 <li>Only one window.</li>
@@ -579,45 +573,104 @@ Note right of C: 没人陪我玩
 </ol>
 </section>
 
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="https://madgezhang.github.io/post/hello-gridea/">
-                  <h3 class="post-title">
-                    Hello Gridea
-                  </h3>
-                </a>
               </div>
-            
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#1-characteristics-intro">1 Characteristics Intro</a>
+<ul>
+<li><a href="#11-what-you-see-is-what-you-get">1.1 What you see is what you get</a></li>
+<li><a href="#12-convenient-to-edit-table-code-and-formula-block-level-element">1.2 Convenient to edit table,  code and formula —— block-level element</a></li>
+</ul>
+</li>
+<li><a href="#2-markdown-tutorial">2 Markdown tutorial</a>
+<ul>
+<li><a href="#21-paragraph">2.1 Paragraph</a></li>
+<li><a href="#22-fonts">2.2 Fonts</a></li>
+<li><a href="#23-separator-line">2.3 Separator Line</a></li>
+<li><a href="#24-delete-line">2.4 Delete Line</a></li>
+<li><a href="#25-underline">2.5 Underline</a></li>
+<li><a href="#26-foot-notation">2.6 Foot Notation</a></li>
+<li><a href="#27-link">2.7 Link</a></li>
+<li><a href="#28-advanced-link">2.8 Advanced Link</a></li>
+<li><a href="#29-pictures">2.9 Pictures</a></li>
+<li><a href="#210-tables">2.10 Tables</a></li>
+<li><a href="#211-advanced-skills">2.11 Advanced Skills</a></li>
+<li><a href="#212-typora-%E7%94%BB%E6%B5%81%E7%A8%8B%E5%9B%BE-%E6%97%B6%E5%BA%8F%E5%9B%BE%E9%A1%BA%E5%BA%8F%E5%9B%BE-%E7%94%98%E7%89%B9%E5%9B%BE">2.12 Typora 画流程图、时序图(顺序图)、甘特图</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
-            
-
-          </div>
-
+              </div>
+            </div>
+          </article>
         </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://madgezhang.github.io/post/hello-gridea/">
+              <h3 class="post-title">
+                Hello Gridea
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://madgezhang.github.io//atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
       </div>
     </div>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
+    <script>
+      hljs.initHighlightingOnLoad()
 
-AOS.init();
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
 
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
 
-</script>
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
 
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
 
-
-
-
-
+    </script>
   </body>
 </html>
