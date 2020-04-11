@@ -1,109 +1,102 @@
+
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+<meta charset="utf-8" >
+
 <title>贝叶斯推断——四种基本且广泛使用的一维模型（参数是一维的） | Madge&#39;s blog</title>
-<link rel="shortcut icon" href="https://madgezhang.github.io//favicon.ico?v=1586605316320">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<meta name="description" content="Madge&#39;s blog">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://madgezhang.github.io//favicon.ico?v=1586606246916">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://madgezhang.github.io//styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="贝叶斯推断——四种基本且广泛使用的一维模型（参数是一维的） | Madge&#39;s blog - Atom Feed" href="https://madgezhang.github.io//atom.xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="
-
-二项分布、正态分布、泊松分布、指数分布
-
-
-这里的分布是针对似然而言的（或者说，需要估计的是哪一个分布的参数）
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
-贝叶斯推断
 
-
-贝叶斯推断就是根据新的数据来更新（修正）我们的认知。
-prior+data→posterior
-
-
-贝叶..." />
-    <meta name="keywords" content="" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://madgezhang.github.io/">
-  <img class="avatar" src="https://madgezhang.github.io//images/avatar.png?v=1586605316320" alt="">
-  </a>
-  <h1 class="site-title">
-    Madge&#39;s blog
-  </h1>
-  <p class="site-description">
-    Madge's blog
-  </p>
-  <div class="menu-container">
-    
-      
-        <a href="/" class="menu">
-          首页
-        </a>
-      
-    
-      
-        <a href="/archives" class="menu">
-          归档
-        </a>
-      
-    
-      
-        <a href="/tags" class="menu">
-          标签
-        </a>
-      
-    
-      
-        <a href="/post/about" class="menu">
-          关于
-        </a>
-      
-    
-  </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://madgezhang.github.io/">
+        <img class="avatar" src="https://madgezhang.github.io//images/avatar.png?v=1586606246916" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://madgezhang.github.io/">
+        <h1 class="site-title">Madge&#39;s blog</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
   </div>
 </div>
 
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
         <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              贝叶斯推断——四种基本且广泛使用的一维模型（参数是一维的）
-            </h2>
-            <div class="post-info">
-              <span>
-                2020-04-11
-              </span>
-              <span>
-                3 min read
-              </span>
-              
-            </div>
+          
+          <h2 class="post-title">贝叶斯推断——四种基本且广泛使用的一维模型（参数是一维的）</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2020-04-11</span>
             
-            <div class="post-content-wrapper">
-              <div class="post-content">
-                <ul>
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://madgezhang.github.io/tag/IL9kDD3Uy/">
+                    Bayes
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <ul>
 <li>
 <p>二项分布、正态分布、泊松分布、指数分布</p>
 </li>
@@ -111,23 +104,22 @@ prior+data→posterior
 <p>这里的分布是针对似然而言的（或者说，需要估计的是哪一个分布的参数）</p>
 </li>
 </ul>
+<hr>
 <h2 id="贝叶斯推断">贝叶斯推断</h2>
 <ul>
 <li>
-<p>贝叶斯推断就是根据新的数据来更新（修正）我们的认知。</p>
+<p>贝叶斯推断就是根据新的数据来更新（修正）我们的认知：</p>
 <p>prior+data→posterior</p>
 </li>
 <li>
 <p>贝叶斯推断是通过贝叶斯法则来进行的：<br>
 <img src="https://madgezhang.github.io//post-images/1586605236746.png" alt="" loading="lazy"></p>
-<figure data-type="image" tabindex="1"><img src="C:%5CUsers%5CJIng%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200411173439374.png" alt="image-20200411173439374" loading="lazy"></figure>
 </li>
 </ul>
-<p>p(theta)称为<strong>先验分布</strong>，专家意见和相关研究结果可以作为有信息的先验；<br>
-p(y|theta)称为<strong>似然</strong>；<br>
-p(y)称为证据，即<strong>归一化因子</strong>，归一化因子的计算方法：<br>
-<img src="C:%5CUsers%5CJIng%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200411174111469.png" alt="image-20200411174111469" loading="lazy"><br>
-虽然在低维中，这个积分可以较容易地计算出来，但在高维中它会变得难以处理。这也是贝叶斯计算中的一个难点。</p>
+<p>p(θ)称为<strong>先验分布</strong>，专家意见和相关研究结果可以作为有信息的先验；<br>
+p(y│θ)称为<strong>似然</strong>；<br>
+p(y)称为证据，即<strong>归一化因子</strong>，归一化因子的计算方法：</p>
+<p>虽然在低维中，这个积分可以较容易地计算出来，但在高维中它会变得难以处理。这也是贝叶斯计算中的一个难点。</p>
 <hr>
 <h2 id="二项分布">二项分布</h2>
 <h3 id="抽样模型">抽样模型</h3>
@@ -156,107 +148,75 @@ p(y)称为证据，即<strong>归一化因子</strong>，归一化因子的计�
 </ul>
 <p>则后验：<img src="D:%5Cmyblog%5C%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD%E2%80%94%E2%80%94%E5%9B%9B%E7%A7%8D%E5%9F%BA%E6%9C%AC%E4%B8%94%E5%B9%BF%E6%B3%9B%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E7%BB%B4%E6%A8%A1%E5%9E%8B%EF%BC%88%E5%8F%82%E6%95%B0%E6%98%AF%E4%B8%80%E7%BB%B4%E7%9A%84%EF%BC%89.assets%5Cimage-20200411185551642.png" alt="image-20200411185551642" loading="lazy"></p>
 <p>我们可以将这一后验分布看作未标准化的贝塔分布：</p>
-<figure data-type="image" tabindex="2"><img src="D:%5Cmyblog%5C%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD%E2%80%94%E2%80%94%E5%9B%9B%E7%A7%8D%E5%9F%BA%E6%9C%AC%E4%B8%94%E5%B9%BF%E6%B3%9B%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E7%BB%B4%E6%A8%A1%E5%9E%8B%EF%BC%88%E5%8F%82%E6%95%B0%E6%98%AF%E4%B8%80%E7%BB%B4%E7%9A%84%EF%BC%89.assets%5Cimage-20200411185652515.png" alt="image-20200411185652515" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="D:%5Cmyblog%5C%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD%E2%80%94%E2%80%94%E5%9B%9B%E7%A7%8D%E5%9F%BA%E6%9C%AC%E4%B8%94%E5%B9%BF%E6%B3%9B%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E7%BB%B4%E6%A8%A1%E5%9E%8B%EF%BC%88%E5%8F%82%E6%95%B0%E6%98%AF%E4%B8%80%E7%BB%B4%E7%9A%84%EF%BC%89.assets%5Cimage-20200411185652515.png" alt="image-20200411185652515" loading="lazy"></figure>
 <hr>
 <p>PS:</p>
 <p>贝塔分布的密度函数：</p>
-<figure data-type="image" tabindex="3"><img src="D:%5Cmyblog%5C%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD%E2%80%94%E2%80%94%E5%9B%9B%E7%A7%8D%E5%9F%BA%E6%9C%AC%E4%B8%94%E5%B9%BF%E6%B3%9B%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E7%BB%B4%E6%A8%A1%E5%9E%8B%EF%BC%88%E5%8F%82%E6%95%B0%E6%98%AF%E4%B8%80%E7%BB%B4%E7%9A%84%EF%BC%89.assets%5Cimage-20200411185831519.png" alt="image-20200411185831519" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="D:%5Cmyblog%5C%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD%E2%80%94%E2%80%94%E5%9B%9B%E7%A7%8D%E5%9F%BA%E6%9C%AC%E4%B8%94%E5%B9%BF%E6%B3%9B%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E7%BB%B4%E6%A8%A1%E5%9E%8B%EF%BC%88%E5%8F%82%E6%95%B0%E6%98%AF%E4%B8%80%E7%BB%B4%E7%9A%84%EF%BC%89.assets%5Cimage-20200411185831519.png" alt="image-20200411185831519" loading="lazy"></figure>
 <p>贝塔函数Be(y+1, n-y+1)的分母与该例中的归一化系数是相同的；<br>
 该例中的后验分布相当于贝塔分布Be(y+1, n-y+1)乘以一个常数<img src="D:%5Cmyblog%5C%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD%E2%80%94%E2%80%94%E5%9B%9B%E7%A7%8D%E5%9F%BA%E6%9C%AC%E4%B8%94%E5%B9%BF%E6%B3%9B%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E7%BB%B4%E6%A8%A1%E5%9E%8B%EF%BC%88%E5%8F%82%E6%95%B0%E6%98%AF%E4%B8%80%E7%BB%B4%E7%9A%84%EF%BC%89.assets%5Cimage-20200411190139251.png" alt="image-20200411190139251" loading="lazy"></p>
 <p>我们可以计算出该例中的归一化系数：（可以看出，p(y)的值仅取决于试验次数n）</p>
-<figure data-type="image" tabindex="4"><img src="D:%5Cmyblog%5C%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD%E2%80%94%E2%80%94%E5%9B%9B%E7%A7%8D%E5%9F%BA%E6%9C%AC%E4%B8%94%E5%B9%BF%E6%B3%9B%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E7%BB%B4%E6%A8%A1%E5%9E%8B%EF%BC%88%E5%8F%82%E6%95%B0%E6%98%AF%E4%B8%80%E7%BB%B4%E7%9A%84%EF%BC%89.assets%5Cimage-20200411191219070.png" alt="image-20200411191219070" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="D:%5Cmyblog%5C%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD%E2%80%94%E2%80%94%E5%9B%9B%E7%A7%8D%E5%9F%BA%E6%9C%AC%E4%B8%94%E5%B9%BF%E6%B3%9B%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E7%BB%B4%E6%A8%A1%E5%9E%8B%EF%BC%88%E5%8F%82%E6%95%B0%E6%98%AF%E4%B8%80%E7%BB%B4%E7%9A%84%EF%BC%89.assets%5Cimage-20200411191219070.png" alt="image-20200411191219070" loading="lazy"></figure>
 <hr>
 <p><strong>接上个例子</strong></p>
 <p>该如何计算<img src="D:%5Cmyblog%5C%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD%E2%80%94%E2%80%94%E5%9B%9B%E7%A7%8D%E5%9F%BA%E6%9C%AC%E4%B8%94%E5%B9%BF%E6%B3%9B%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E7%BB%B4%E6%A8%A1%E5%9E%8B%EF%BC%88%E5%8F%82%E6%95%B0%E6%98%AF%E4%B8%80%E7%BB%B4%E7%9A%84%EF%BC%89.assets%5Cimage-20200411192116365.png" alt="image-20200411192116365" loading="lazy">？</p>
-<figure data-type="image" tabindex="5"><img src="D:%5Cmyblog%5C%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD%E2%80%94%E2%80%94%E5%9B%9B%E7%A7%8D%E5%9F%BA%E6%9C%AC%E4%B8%94%E5%B9%BF%E6%B3%9B%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E7%BB%B4%E6%A8%A1%E5%9E%8B%EF%BC%88%E5%8F%82%E6%95%B0%E6%98%AF%E4%B8%80%E7%BB%B4%E7%9A%84%EF%BC%89.assets%5Cimage-20200411192152924.png" alt="image-20200411192152924" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="D:%5Cmyblog%5C%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD%E2%80%94%E2%80%94%E5%9B%9B%E7%A7%8D%E5%9F%BA%E6%9C%AC%E4%B8%94%E5%B9%BF%E6%B3%9B%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E7%BB%B4%E6%A8%A1%E5%9E%8B%EF%BC%88%E5%8F%82%E6%95%B0%E6%98%AF%E4%B8%80%E7%BB%B4%E7%9A%84%EF%BC%89.assets%5Cimage-20200411192152924.png" alt="image-20200411192152924" loading="lazy"></figure>
 <p>我们可以成功计算出分母：</p>
-<figure data-type="image" tabindex="6"><img src="D:%5Cmyblog%5C%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD%E2%80%94%E2%80%94%E5%9B%9B%E7%A7%8D%E5%9F%BA%E6%9C%AC%E4%B8%94%E5%B9%BF%E6%B3%9B%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E7%BB%B4%E6%A8%A1%E5%9E%8B%EF%BC%88%E5%8F%82%E6%95%B0%E6%98%AF%E4%B8%80%E7%BB%B4%E7%9A%84%EF%BC%89.assets%5Cimage-20200411192224832.png" alt="image-20200411192224832" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="D:%5Cmyblog%5C%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD%E2%80%94%E2%80%94%E5%9B%9B%E7%A7%8D%E5%9F%BA%E6%9C%AC%E4%B8%94%E5%B9%BF%E6%B3%9B%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E7%BB%B4%E6%A8%A1%E5%9E%8B%EF%BC%88%E5%8F%82%E6%95%B0%E6%98%AF%E4%B8%80%E7%BB%B4%E7%9A%84%EF%BC%89.assets%5Cimage-20200411192224832.png" alt="image-20200411192224832" loading="lazy"></figure>
 <p>所以，贝塔分布是伯努利分布（二项分布）的共轭先验分布。</p>
 <p>PS：在贝叶斯统计中，如果后验分布与先验分布属于同类，则先验分布与后验分布被称为共轭分布，而先验分布被称为似然函数的共轭先验。</p>
 
-              </div>
-              <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%8E%A8%E6%96%AD">贝叶斯推断</a></li>
-<li><a href="#%E4%BA%8C%E9%A1%B9%E5%88%86%E5%B8%83">二项分布</a>
-<ul>
-<li><a href="#%E6%8A%BD%E6%A0%B7%E6%A8%A1%E5%9E%8B">抽样模型</a></li>
-<li><a href="#%E5%AE%9E%E9%99%85%E7%9A%84%E4%BE%8B%E5%AD%901the-binomial-example-with-the-uniform-prior-distribution">实际的例子1（the binomial example with the uniform prior distribution）</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-              </div>
-            </div>
-          </article>
+          </div>
         </div>
 
         
           <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://madgezhang.github.io/post/rstudio-an-zhuang-rtools/">
+            <a class="purple-link" href="https://madgezhang.github.io/post/rstudio-an-zhuang-rtools/">
               <h3 class="post-title">
-                RStudio 安装 Rtools
+                下一篇：RStudio 安装 Rtools
               </h3>
             </a>
           </div>
-        
+          
+      </div>
 
-        
+      
 
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-  <a class="rss" href="https://madgezhang.github.io//atom.xml" target="_blank">
-    <i class="ri-rss-line"></i> RSS
-  </a>
+      <div class="site-footer">
+  <div class="slogan">Madge's blog</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://madgezhang.github.io//atom.xml" target="_blank">RSS</a>
 </div>
 
-      </div>
+
     </div>
+    <script type="application/javascript">
 
-    <script>
-      hljs.initHighlightingOnLoad()
+hljs.initHighlightingOnLoad()
 
-      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
 
-      // This should probably be throttled.
-      // Especially because it triggers during smooth scrolling.
-      // https://lodash.com/docs/4.17.10#throttle
-      // You could do like...
-      // window.addEventListener("scroll", () => {
-      //    _.throttle(doThatStuff, 100);
-      // });
-      // Only not doing it here to keep this Pen dependency-free.
+</script>
 
-      window.addEventListener("scroll", event => {
-        let fromTop = window.scrollY;
 
-        mainNavLinks.forEach((link, index) => {
-          let section = document.getElementById(decodeURI(link.hash).substring(1));
-          let nextSection = null
-          if (mainNavLinks[index + 1]) {
-            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
-          }
-          if (section.offsetTop <= fromTop) {
-            if (nextSection) {
-              if (nextSection.offsetTop > fromTop) {
-                link.classList.add("current");
-              } else {
-                link.classList.remove("current");    
-              }
-            } else {
-              link.classList.add("current");
-            }
-          } else {
-            link.classList.remove("current");
-          }
-        });
-      });
 
-    </script>
+
   </body>
 </html>
