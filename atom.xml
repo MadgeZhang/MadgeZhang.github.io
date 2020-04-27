@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://madgezhang.github.io/</id>
     <title>Madge&apos;s blog</title>
-    <updated>2020-04-27T08:51:16.474Z</updated>
+    <updated>2020-04-27T09:01:54.906Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://madgezhang.github.io/"/>
     <link rel="self" href="https://madgezhang.github.io/atom.xml"/>
@@ -10,6 +10,18 @@
     <logo>https://madgezhang.github.io/images/avatar.png</logo>
     <icon>https://madgezhang.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Madge&apos;s blog</rights>
+    <entry>
+        <title type="html"><![CDATA[DCM —— 教材]]></title>
+        <id>https://madgezhang.github.io/post/dcm-jiao-cai/</id>
+        <link href="https://madgezhang.github.io/post/dcm-jiao-cai/">
+        </link>
+        <updated>2020-04-27T08:52:15.000Z</updated>
+        <content type="html"><![CDATA[<ol>
+<li>Discrete Choice Methods with Simulation<br>
+<a href="https://eml.berkeley.edu/books/choice2.html">https://eml.berkeley.edu/books/choice2.html</a></li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[离散选择模型（Discrete Choice Model, DCM）之一 —— 简介]]></title>
         <id>https://madgezhang.github.io/post/chi-san-xuan-ze-mo-xing-discrete-choice-model-dcmzhi-yi-jian-jie/</id>
@@ -49,7 +61,7 @@
 <h3 id="21-图示">2.1 图示</h3>
 <figure data-type="image" tabindex="1"><img src="https://madgezhang.github.io//post-images/1587977205289.png" alt="" loading="lazy"></figure>
 <p>下图是细化的选择行为要素图：</p>
-<img src="C:\Users\JIng\AppData\Roaming\Typora\typora-user-images\image-20200427160253221.png" alt="image-20200427160253221" style="zoom:150%;" />
+<figure data-type="image" tabindex="2"><img src="https://madgezhang.github.io//post-images/1587978093786.png" alt="" loading="lazy"></figure>
 <p>离散选择模型可以抽象地描述成下面的函数：</p>
 <p><strong><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span></span></span></span>（个体 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>选择方案 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span>）= <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span></span></span></span>（决策者 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 的个人属性, 方案 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span></span></span></span> 的属性</strong></p>
 <h3 id="22-具体说明">2.2 具体说明</h3>
